@@ -1887,7 +1887,7 @@ input, select, textarea {
 
 				ul.social li a:hover {
 					top: -5px;
-					background-color: transparent;
+					color: transparent;
 				}
 
 					ul.social li a:hover:before {
