@@ -221,6 +221,18 @@ input, select, textarea {
 			font-size: 1.25em;
 		}
 
+/* About Me */
+.aboutme {
+	font-size: .9em;
+	line-height: normal;
+	text-align: left;
+	margin-top: 1.5em;
+}
+
+.item {
+	margin-bottom: 1.5em;
+}
+
 /* Container */
 
 	.container {
@@ -1899,6 +1911,11 @@ input, select, textarea {
 						background-color: transparent;
 					}
 
+/* About Me */
+ul.aboutme {
+	list-style: none;
+}
+
 /* Actions */
 
 	ul.actions {
@@ -1926,7 +1943,9 @@ input, select, textarea {
 	}
 
 		.box.style1 {
-			padding: 3em 2em 3.5em 2em;
+			padding: 2.5em 1em 1.5em 1em;
+			height: 25em;
+			width:
 		}
 
 			.box.style1 h3 {
