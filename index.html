@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Evan Hsia – Staff Software Engineer (AI Workflow & Serverless Platforms)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Evan Hsia – Staff-level backend/platform engineer. AWS serverless, event-driven distributed systems, and AI-assisted workflow automation at scale (10M+ events/month)."
+  />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --bg-alt: #020617;
+      --card-bg: #020617;
+      --card-border: #1f2937;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.10);
+      --accent-strong: #0ea5e9;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --chip-bg: rgba(148, 163, 184, 0.10);
+      --chip-border: rgba(148, 163, 184, 0.35);
+      --radius-lg: 18px;
+      --radius-sm: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --max-width: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    /* Top navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      object-fit: cover;
+      background: #111827;
+    }
+
+    .brand { display: flex; flex-direction: column; }
+    .brand-name { font-weight: 650; letter-spacing: 0.02em; font-size: 15px; }
+    .brand-sub { font-size: 12px; color: var(--text-soft); }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .nav-link {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    /* Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 880px) {
+      .grid { grid-template-columns: minmax(0, 1fr); }
+      .nav { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .nav-links { flex-wrap: wrap; }
+    }
+
+    /* Hero card */
+    .card {
+      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% -20%, rgba(56, 189, 248, 0.14), transparent 55%),
+        radial-gradient(circle at 110% 10%, rgba(96, 165, 250, 0.12), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .card-inner { position: relative; z-index: 1; }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 32px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0 0 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0 0 14px;
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      color: var(--text-main);
+      max-width: 620px;
+      margin: 0 0 18px;
+      line-height: 1.55;
+    }
+
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .chip {
+      padding: 5px 11px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--chip-border);
+      background: var(--chip-bg);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chip-accent {
+      background: var(--accent-soft);
+      border-color: rgba(56, 189, 248, 0.7);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+
+    .stat {
+      padding: 10px 11px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-strong), #22c55e);
+      color: #0b1120;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(8, 47, 73, 0.6);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.9);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    /* Right column cards */
+    .side-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      padding: 18px 18px 16px;
+      margin-bottom: 14px;
+    }
+
+    .side-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .side-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .service-item {
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .service-title {
+      font-size: 13px;
+      font-weight: 650;
+      margin-bottom: 4px;
+    }
+
+    .service-body {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.45;
+    }
+
+    /* Lower grid */
+    .lower-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 880px) {
+      .lower-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .section-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      padding: 16px 16px 14px;
+    }
+
+    .section-header {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .section-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .section-body p { margin: 0 0 8px; }
+
+    .section-body ul {
+      margin: 6px 0 8px 18px;
+      padding: 0;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.45;
+    }
+
+    .section-body li { margin-bottom: 4px; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 3px 9px;
+      font-size: 11px;
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Contact/footer */
+    .contact-section {
+      margin-top: 26px;
+      padding: 18px 16px 10px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.98));
+    }
+
+    .contact-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .contact-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .contact-link-pill {
+      font-size: 12px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      transition: all 0.18s ease;
+    }
+
+    .contact-link-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    footer {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: left;
+    }
+
+    footer span { opacity: 0.85; }
+
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header class="nav">
+      <div class="nav-left">
+        <img class="avatar" src="images/headshot.png" alt="Profile" />
+        <div class="brand">
+          <span class="brand-name">Evan Hsia</span>
+          <span class="brand-sub">Staff-level Backend/Platform Engineer</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link" href="#focus">Focus</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Sample work</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="grid">
+      <!-- Hero -->
+      <section class="card">
+        <div class="card-inner">
+          <h1 class="hero-title">Staff Software Engineer — AI-Driven Workflow &amp; Platform Systems</h1>
+          <p class="hero-subtitle">
+            Division Tech Lead @ JobTarget • 7+ years backend/platform • Owner of 10M+ events/month serverless workflows.
+          </p>
+          <p class="hero-tagline">
+            I build and own production systems that automate real-world workflows at scale — event-driven platforms,
+            reliability-first services, and pragmatic AI-assisted automation embedded directly into operational and
+            customer-facing flows.
+          </p>
+
+          <div class="hero-chips">
+            <span class="chip chip-accent">Open to Staff-level full-time roles</span>
+            <span class="chip">AWS Lambda · EventBridge · SQS · Step Functions · DynamoDB</span>
+            <span class="chip">Event-driven systems · Reliability · Orchestration</span>
+            <span class="chip">AI-assisted automation · Classification/triage · Tooling</span>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-label">Scale</div>
+              <div class="stat-value">10M+ events / month</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Reliability</div>
+              <div class="stat-value">99.99% uptime</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Leadership</div>
+              <div class="stat-value">Lead 11 engineers</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Stack</div>
+              <div class="stat-value">Python · .NET · TS/Node</div>
+            </div>
+          </div>
+
+          <div class="hero-contact">
+            <a class="btn btn-primary" href="mailto:echsia16@gmail.com?subject=Staff%20Role%20-%20Intro">
+              Email
+            </a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/evan-hsia" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/ehsia1" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Side focus -->
+      <aside id="focus" class="side-card">
+        <div class="side-title">Focus areas</div>
+        <p class="side-subtitle">
+          Where I’ve delivered outsized impact: platform reliability, event-driven distributed systems, and AI-assisted workflow automation.
+        </p>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-title">Event-driven platforms &amp; orchestration</div>
+            <div class="service-body">
+              Designing durable workflows with clear failure modes, retry/dedup patterns, and high-leverage orchestration for complex pipelines.
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-title">Reliability, observability, and on-call readiness</div>
+            <div class="service-body">
+              Instrumentation, alerting strategy, incident response hygiene, and operational tooling that reduces toil while improving correctness and uptime.
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-title">AI-assisted workflow automation</div>
+            <div class="service-body">
+              Practical AI/agent tooling embedded into production processes (classification/triage, automation workflows, developer productivity) with an emphasis on reliability.
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-title">Backend/API modernization</div>
+            <div class="service-body">
+              Incremental modernization and service boundaries that preserve stability while enabling faster iteration on complex workflow products.
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Lower grid -->
+    <section class="lower-grid">
+      <!-- Experience -->
+      <section id="experience" class="section-card">
+        <div class="section-header">Current role</div>
+        <div class="section-body">
+          <p>
+            I’m currently a <strong>Division Tech Lead at JobTarget</strong> (recruitment advertising platform), where I:
+          </p>
+          <ul>
+            <li>Lead <strong>two engineering teams (11 engineers)</strong> across backend, frontend, and infrastructure.</li>
+            <li>Own a <strong>serverless event pipeline</strong> distributing 10M+ job events/month to partners (e.g., Indeed, ZipRecruiter).</li>
+            <li>Drive architecture decisions across Lambda, EventBridge, SQS retry/dedup, Step Functions, and DynamoDB.</li>
+            <li>Embed <strong>AI-assisted automation</strong> into operational workflows (classification/triage, tooling) to reduce manual overhead.</li>
+            <li>Oversee workflow UI modernization (Next.js) and reliability/cost improvements in production systems.</li>
+          </ul>
+          <p>
+            I’m exploring <strong>Staff-level full-time opportunities</strong> focused on platform ownership, reliability, and AI-driven workflow automation.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Platform ownership</span>
+            <span class="pill">Reliability</span>
+            <span class="pill">Event-driven systems</span>
+            <span class="pill">AI-assisted automation</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section-card">
+        <div class="section-header">Sample work</div>
+        <div class="section-body">
+          <p><strong>10M+ events/month serverless pipeline</strong></p>
+          <ul>
+            <li>EventBridge → SQS retry/dedup → Lambda → DynamoDB for large-scale job delivery.</li>
+            <li>Built reliability patterns and monitoring to sustain 99.99% uptime.</li>
+            <li>Reduced failed event flows and improved operational response quality.</li>
+          </ul>
+
+          <p><strong>AI-assisted workflow automation</strong></p>
+          <ul>
+            <li>Designed AI-enabled classification/triage and operational tooling integrated into production workflows.</li>
+            <li>Reduced manual operational overhead and improved response speed for incidents and tickets.</li>
+          </ul>
+
+          <p>
+            Additional projects:
+            <a href="https://github.com/ehsia1" target="_blank" rel="noreferrer">github.com/ehsia1</a>.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+      <div class="contact-title">Contact</div>
+      <div class="contact-body">
+        Best way to reach me: <strong>echsia16@gmail.com</strong>. Links below.
+      </div>
+
+      <div class="contact-links">
+        <a class="contact-link-pill" href="mailto:echsia16@gmail.com?subject=Staff%20Role%20-%20Intro">
+          Email: echsia16@gmail.com
+        </a>
+        <a class="contact-link-pill" href="https://www.linkedin.com/in/evan-hsia" target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+        <a class="contact-link-pill" href="https://ehsia1.github.io" target="_blank" rel="noreferrer">
+          Site
+        </a>
+        <a class="contact-link-pill" href="https://github.com/ehsia1" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+      </div>
+
+      <div class="contact-links" style="margin-top: 10px;">
+        <!-- <a class="contact-link-pill"
+           href="images/Evan_Hsia_Resume_2025_One_page.pdf"
+           target="_blank"
+           rel="noreferrer">
+          Resume (PDF)
+        </a> -->
+        <!-- Optional: add a 2-page version if you have it -->
+        <!--
+        <a class="contact-link-pill"
+           href="images/Evan_Hsia_Resume_2025_Two_page.pdf"
+           target="_blank"
+           rel="noreferrer">
+          Resume (2-page PDF)
+        </a>
+        -->
+      </div>
+
+      <footer>
+        <span>Currently full-time at JobTarget. Open to impactful Staff-level opportunities.</span>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
